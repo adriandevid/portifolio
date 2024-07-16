@@ -57,18 +57,23 @@ var PageTransitions = (function ($, options) {
 
         });
 
-        window.onhashchange = function(event) {
-            if(location.hash) {
+        $('.ajax-page-load').each(function () {
+            $(this).on('click', (event) => {
                 if (isAnimating) {
                     return false;
                 }
                 var menuLink = $(menu+' a[href*="'+location.hash.split('/')[0]+'"]');
-                activeMenuItem( menuLink );
-                Animate(menuLink);
+
+                if(menuLink != undefined && location.hash != location.hash.split('/')[0]) {
+                    activeMenuItem(menuLink);
+                    Animate(menuLink);
+                }
+
+                // localStorage.setItem("portfolio-page-index", $(event.currentTarget).attr("data-page-id"));
 
                 ajaxLoader();
-            }
-        };
+            }); 
+        })
 
         var menu = options.menu,
         pageStart = getActiveSection();
@@ -85,8 +90,7 @@ var PageTransitions = (function ($, options) {
         
 
         Animate(menuLink);
-
-        $('body').append('<div id="page-ajax-loaded" class="page-ajax-loaded animated rotateInDownRight"></div>');
+        
         ajaxLoader();
     }
 
@@ -128,30 +132,27 @@ var PageTransitions = (function ($, options) {
             $('#page-ajax-loaded').addClass('rotateOutDownRight closed');
             $('body').removeClass('ajax-page-visible');
             setTimeout(function(){
-                $('#page-ajax-loaded.closed').html('');
+                // $('#page-ajax-loaded.closed').html('');
                 ajaxLoadedContent.hide();
             }, 500);
         }
 
+        // converter para component
         var href = $('.ajax-page-load').each(function(){
-            href = $(this).attr('href');
-            if(location.hash == location.hash.split('/')[0] + '/' + href.substr(0,href.length-5)){
-                var toLoad =  $(this).attr('href');
-                showContent();
-                ajaxLoadedContent.load(toLoad);
-                return false;
-            }
+            href = $(this).attr('data-page-id');
+            
+            showContent();
         });
 
         $(document)
             .on("click",".site-main-menu, #ajax-page-close-button", function (e) { // Hide Ajax Loaded Page on Navigation cleck and Close button
                 e.preventDefault();
                 hideContent();
-                location.hash = location.hash.split('/')[0];
+                // location.hash = location.hash.split('/')[0];
             })
             .on("click",".ajax-page-load", function () { // Show Ajax Loaded Page
-                var hash = location.hash.split('/')[0] + '/' + $(this).attr('href').substr(0,$(this).attr('href').length-5);
-                location.hash = hash;
+                // var hash = location.hash.split('/')[0] + '/' + $(this).attr('href').substr(0,$(this).attr('href').length-5);
+                // location.hash = hash;
                 showContent();
 
                 return false;
