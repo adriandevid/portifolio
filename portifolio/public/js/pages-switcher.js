@@ -25,7 +25,7 @@ var PageTransitions = (function ($, options) {
 
         // support css animations
         support = Modernizr.cssanimations;
-
+    
     function init(options) {
 
         // Get all the .pt-page sections.
@@ -530,6 +530,7 @@ var PageTransitions = (function ($, options) {
 
     return {
         init : init,
+        Animate: Animate
     };
 
 })(jQuery);

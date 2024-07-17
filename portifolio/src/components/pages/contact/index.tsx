@@ -13,7 +13,7 @@ export default function Contact() {
                         <h3>Get in <span>Touch</span></h3>
                       </div>
                       {/* <!-- Google Map --> */}
-                      <div id="map" className="map"></div>
+                      {/* <div id="map" className="map"></div> */}
                       {/* <!-- End of Google Map --> */}
 
                       <div className="contact-info-block">

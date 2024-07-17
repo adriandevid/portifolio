@@ -87,18 +87,22 @@
 
     //On Window load & Resize
     $(window)
-        .on('load', function() { //Load
-            // Animation on Page Loading
-            $(".preloader").fadeOut("slow");
+        // .on('load', function() { //Load
+        //     // Animation on Page Loading
+        //     $(".preloader").fadeOut("slow");
 
-            // initializing page transition.
-            var ptPage = $('.subpages');
-            if (ptPage[0]) {
-                PageTransitions.init({
-                    menu: 'ul.site-main-menu',
-                });
-            }
-        })
+        //     // initializing page transition.
+        //     var ptPage = $('.subpages');
+        //     if (ptPage[0]) {
+        //         PageTransitions.init({
+        //             menu: 'ul.site-main-menu',
+        //         });
+
+        //         $('body').removeClass('ajax-page-visible');
+
+        //         // PageTransitions.Animate($(menu +' a[href*="'+ location.hash.split('/')[0]+ '"]'))
+        //     }
+        // })
         .on('resize', function() { //Resize
              mobileMenuHide();
 
@@ -127,6 +131,9 @@
             }, 500);
         });
 
+        
+        // var ptPage = $('.subpages');
+        
         // Portfolio hover effect init
         $(' #portfolio_grid > figure ').each( function() { $(this).hoverdir(); } );
 
@@ -134,6 +141,14 @@
         setTimeout(function(){
             var $container = $(".blog-masonry");
             $container.masonry();
+            
+            $(".preloader").fadeOut("slow");
+
+            PageTransitions.init({
+                menu: 'ul.site-main-menu',
+            });
+
+            $('body').addClass('ajax-page-visible');
         }, 500);
 
         // Mobile menu
@@ -270,10 +285,11 @@
             });
 
         //Google Maps
-        $("#map").googleMap();
-        $("#map").addMarker({
-            address: "15 avenue des champs Elysées 75008 Paris" // Your Address
-        });
-    });
+        // $("#map").googleMap();
+        // $("#map").addMarker({
+        //     address: "15 avenue des champs Elysées 75008 Paris" // Your Address
+        // });
 
+        
+    });
 })(jQuery);

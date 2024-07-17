@@ -143,9 +143,10 @@ export default function RootLayout({
         <Script type="text/javascript" src="js/owl.carousel.min.js"></Script>
         <Script type="text/javascript" src="js/jquery.magnific-popup.min.js"></Script>
         <Script type="text/javascript" src="js/jquery.hoverdir.js"></Script>
+        {/* <Script src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></Script> */}
         {/* <!--<Script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR-API-KEY"></Script>--> */}
-        <Script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></Script>
-        <Script type="text/javascript" src="js/jquery.googlemap.js"></Script>
+        {/* <Script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></Script> */}
+        {/* <Script type="text/javascript" src="js/jquery.googlemap.js"></Script> */}
         <Script type="text/javascript" src="js/main.js"></Script>
       </body>
     </html>
